@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-teal: #2dd4bf;
+  --color-neon-blue: #3b82f6;
+  --color-glass: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  
+  --font-inter: "Inter", sans-serif;
+}
+
+:root {
+  --background: #020617;
+  --foreground: #f8fafc;
+}
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    @apply font-inter antialiased;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+  
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl transition-all duration-300;
+  }
+  
+  .neon-border {
+    @apply border border-neon-teal/30 shadow-[0_0_15px_rgba(45,212,191,0.2)];
+  }
+  
+  .neon-text {
+    @apply text-neon-teal drop-shadow-[0_0_8px_rgba(45,212,191,0.5)];
+  }
+
+  .neon-glow-btn {
+    @apply relative overflow-hidden bg-neon-teal/10 hover:bg-neon-teal/20 border border-neon-teal/50 text-neon-teal font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(45,212,191,0.4)];
+  }
+}
+
+@keyframes pulse-neon {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(45, 212, 191, 0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(45, 212, 191, 0.6);
+  }
+}
+
+.animate-pulse-neon {
+  animation: pulse-neon 2s infinite ease-in-out;
+}
